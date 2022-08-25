@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { Layout, LayoutImage, PageContent } from '../../components/layout/Layout.css'
+import { Layout, PageContent } from '../../components/layout/Layout.css'
 import { Contact } from '../../pages/contact/Contact'
 import { Forum } from '../../pages/forum/Forum'
 import { Gallery } from '../../pages/gallery/Gallery'
 import { Support } from '../../pages/support/Support'
 import { Footer } from '../footer/Footer'
 import { Menu } from '../menu/Menu'
-import { users } from '../../database/users/users'
-import { comments } from '../../database/forum/forum'
+import { Profile } from '../../pages/profile/Profile'
 
 export const Content = ( ) => {
 
@@ -26,15 +25,13 @@ export const Content = ( ) => {
             page === "Galeria" && <Gallery /> ||
             page === "Foro" && <Forum /> ||
             page === "Contacto" && <Contact /> ||
-            page === "Soporte" && <Support />
+            page === "Soporte" && <Support /> ||
+            page === "Perfil" && <Profile />
           }
         </PageContent>
       </Layout>
       
       {page === "Inicio" && <Footer/>}
-
-      
-        
     </>
   )
 }

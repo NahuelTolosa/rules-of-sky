@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledForumList } from './ForumList.css'
+import { ForumListContent } from './ForumList.css'
 import { ForumListItem } from './ForumListItem'
 import { getUserName } from '../../database/users/users'
 import { comments } from '../../database/forum/forum'
@@ -7,14 +7,19 @@ import { comments } from '../../database/forum/forum'
 export const ForumList = () => {
 
   return (
-    <StyledForumList>
+    <ForumListContent>
       {
-        comments.map(({user, comment}) => {
+        comments.map(({ user, comment, responses }, index) => {
           return (
-            <ForumListItem user={getUserName(user)} comment={comment} />
+            <ForumListItem
+              key={`comment-${index}`}
+              user={getUserName(user)}
+              comment={comment}
+              responses={responses}
+            />
           )
         })
       }
-    </StyledForumList>
+    </ForumListContent>
   )
 }

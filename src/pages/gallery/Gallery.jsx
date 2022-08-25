@@ -1,10 +1,11 @@
 import React from 'react'
 import { GalleryGrid } from '../../components/gallery/GalleryGrid'
+import { GalleryTitle } from '../../components/gallery/GalleryGrid.css'
 
 export const Gallery = () => {
   return (
     <>
-        <h1>Galeria de fotos</h1>
+        <GalleryTitle>Galeria de fotos</GalleryTitle>
 
         <GalleryGrid />
     </>

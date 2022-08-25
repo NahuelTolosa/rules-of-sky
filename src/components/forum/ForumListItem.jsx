@@ -1,28 +1,47 @@
 import React from 'react'
+import { getUserName } from '../../database/users/users'
 import { 
-  StyledForumListItem, 
-  StyledForumUser,
-  StyledForumComment, 
-  StyledForumP, 
-  StyledForumH2,
-  StyledUserLogo
-} from './ForumListItem.css'
+  ForumItem, 
+  ForumHeader,
+  ForumBody, 
+  ForumComment, 
+  ForumH2,
+  UserLogo,
+} from './ForumList.css'
+import { ForumResponse } from './ForumResponse'
 
-export const ForumListItem = ({ user, comment }) => {
+export const ForumListItem = ({ user, comment, responses }) => {
 
   return (
-    <StyledForumListItem>
-        <StyledForumUser>
-          <StyledForumH2>
+    <ForumItem>
+
+        <ForumHeader>
+          <ForumH2>
             {user}
-          </StyledForumH2>
-          <StyledUserLogo />
-        </StyledForumUser>
-        <StyledForumComment>
-          <StyledForumP>
+          </ForumH2>
+          <UserLogo />
+        </ForumHeader>
+
+        <ForumBody>
+
+          <ForumComment>
             {comment}
-          </StyledForumP>
-        </StyledForumComment>
-    </StyledForumListItem>
+          </ForumComment>
+
+        {
+          responses &&
+          responses.map(({ user,comment }, index) => (
+            <ForumResponse
+              key={`response-${index}`}
+              user={getUserName(user)} 
+              response={comment} 
+            />
+            ))
+        }
+        
+
+        </ForumBody>
+
+    </ForumItem>
   )
 }

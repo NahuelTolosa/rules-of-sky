@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
+export const GalleryTitle = styled.h2`
+
+    color: #ddd;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+
+`;
+
 export const StyledGrid = styled.div`
 
     width:80%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(7, 15rem);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-auto-rows: 15rem;
     grid-gap: 1em;
 
 `;
@@ -15,13 +23,26 @@ export const StyledGridItem = styled.div`
     border-radius: 0.1rem;
     
     &:first-child {
-        grid-column: 1 / span 2;
-        grid-row: 1 / span 3;
+        @media (min-width: 1042px) {
+            grid-column: 1 / span 2;
+            grid-row: 1 / span 2;
+        }
     }
     
     &:nth-child(8) {
-        grid-column: 2 / span 2;
-        grid-row: 4 / span 2;
+
+        @media (min-width: 1567px) {
+            grid-column: 2 / span 2;
+            grid-row: 4 / span 2;
+        }
+        @media (min-width: 1042px) {
+            grid-column: 1 / span 2;
+            grid-row: 6 / span 2;
+        }
+        @media (min-width: 1567px) {
+            grid-column: 2 / span 2;
+            grid-row: 4 / span 2;
+        }
     }
 
 `;
@@ -30,7 +51,7 @@ export const StyledImage = styled.button`
 
     border: none;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     border-radius: 0.1rem;
     ${({ img }) =>
         img && `

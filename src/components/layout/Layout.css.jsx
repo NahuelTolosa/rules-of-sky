@@ -25,15 +25,21 @@ export const Layout = styled.div`
 export const PageContent = styled.div`
 
     margin: 10rem 0;
-    padding: 1rem 0 5rem 0;
+    padding: 1rem 0 1rem 0;
     ${({bg}) => (
-        !bg && `background-color: #fff1;`
+        !bg && 
+        `
+            background-color: #fff1;
+            box-shadow: 0rem 0rem 1rem 1rem rgba(0,0,0,0.1);
+        `
     )}
     width: 80%;
-    min-height: 100vh;
+    min-height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 0.25rem;
+
 }
 
 `;
