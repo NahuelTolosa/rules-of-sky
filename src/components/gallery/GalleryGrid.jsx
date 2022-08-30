@@ -18,11 +18,11 @@ import { Modal } from '../modal/Modal';
 export const GalleryGrid = () => {
 
   const [showModal, setShowModal] = useState(false);
-  const [modalImage, setModalImage] = useState({});
+  const [selectedImage, setSelectedImage] = useState({});
 
   const handleImageClick = img => {
-    setModalImage(img);
-    setShowModal(true)
+    setSelectedImage(img);
+    setShowModal(true);
   }
   
   return (
@@ -30,7 +30,7 @@ export const GalleryGrid = () => {
       <Modal 
         showModal={showModal}
         onClose={()=>setShowModal(false)}
-        img={modalImage}
+        img={selectedImage}
       />
 
       <StyledGrid>

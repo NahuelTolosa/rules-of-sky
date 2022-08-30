@@ -1,39 +1,68 @@
 import React, { useState } from 'react'
+import { Modal } from '../modal/Modal';
 import { 
   ProfileContainer,
   UserInfo, 
-  UserPictureContainer, 
+  UserPicture, 
   UserInfoItem, 
   UserInfoSpan, 
   UserInfoButton, 
-  EditUserInfoItem,
-  EditUserInfoLabel,
+  UserInfoItemContainer,
+  UserInfoLabel,
   EditUserInfoInput,
+  EditUserPictureIcon,
 } from './ProfileData.css'
 
 export const ProfileData = () => {
 
   const [editData, setEditData] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const ShowUserInfo = () => (
     <>
       <UserInfo>
-        <UserInfoItem>
-          <UserInfoSpan>
-            User
-          </UserInfoSpan>
-        </UserInfoItem>
-        <UserInfoItem>
-          <UserInfoSpan>
-            user@mail.com
-          </UserInfoSpan>
-        </UserInfoItem>
-        <UserInfoItem>
-          <UserInfoSpan>
-            *************
-          </UserInfoSpan>
+
+        <UserInfoItemContainer>
+          <UserInfoLabel>
+            <UserInfoSpan>
+              Usuario
+            </UserInfoSpan>
+          </UserInfoLabel>
+          <UserInfoItem>
+            <UserInfoSpan>
+              User
+            </UserInfoSpan>
           </UserInfoItem>
+        </UserInfoItemContainer>
+
+        <UserInfoItemContainer>
+          <UserInfoLabel>
+            <UserInfoSpan>
+              Email
+            </UserInfoSpan>
+          </UserInfoLabel>
+          <UserInfoItem>
+            <UserInfoSpan>
+              user@mail.com
+            </UserInfoSpan>
+          </UserInfoItem>
+        </UserInfoItemContainer>
+
+        <UserInfoItemContainer>
+          <UserInfoLabel>
+            <UserInfoSpan>
+              Discord
+            </UserInfoSpan>
+          </UserInfoLabel>
+          <UserInfoItem>
+            <UserInfoSpan>
+              User#1234
+            </UserInfoSpan>
+          </UserInfoItem>
+        </UserInfoItemContainer>
+
       </UserInfo>
+
       <UserInfoButton onClick={() => setEditData(true)}>
         <UserInfoSpan>
           EDITAR
@@ -46,50 +75,59 @@ export const ProfileData = () => {
     <>
       <UserInfo>
 
-        <EditUserInfoItem>
-          <EditUserInfoLabel>
+        <UserInfoItemContainer>
+          <UserInfoLabel>
             <UserInfoSpan>
               Edita tu nombre
             </UserInfoSpan>
-          </EditUserInfoLabel>
+          </UserInfoLabel>
           <EditUserInfoInput/>
-        </EditUserInfoItem>
+        </UserInfoItemContainer>
 
-        <EditUserInfoItem>
-          <EditUserInfoLabel>
+        <UserInfoItemContainer>
+          <UserInfoLabel>
             <UserInfoSpan>
               Edita tu email
             </UserInfoSpan>
-          </EditUserInfoLabel>
+          </UserInfoLabel>
           <EditUserInfoInput/>
-        </EditUserInfoItem>
+        </UserInfoItemContainer>
 
-        <EditUserInfoItem>
-          <EditUserInfoLabel>
+        <UserInfoItemContainer>
+          <UserInfoLabel>
+            <UserInfoSpan>
+              Edita tu usuario de discord
+            </UserInfoSpan>
+          </UserInfoLabel>
+          <EditUserInfoInput />
+        </UserInfoItemContainer>
+
+        <UserInfoItemContainer>
+          <UserInfoLabel>
             <UserInfoSpan>
               Ingresa tu contraseña actual
             </UserInfoSpan>
-          </EditUserInfoLabel>
+          </UserInfoLabel>
           <EditUserInfoInput/>
-        </EditUserInfoItem>
+        </UserInfoItemContainer>
 
-        <EditUserInfoItem>
-          <EditUserInfoLabel>
+        <UserInfoItemContainer>
+          <UserInfoLabel>
             <UserInfoSpan>
               Ingresa tu contraseña nueva
             </UserInfoSpan>
-          </EditUserInfoLabel>
+          </UserInfoLabel>
           <EditUserInfoInput/>
-        </EditUserInfoItem>
+        </UserInfoItemContainer>
 
-        <EditUserInfoItem>
-          <EditUserInfoLabel>
+        <UserInfoItemContainer>
+          <UserInfoLabel>
             <UserInfoSpan>
               Reingresa tu contraseña nueva
             </UserInfoSpan>
-          </EditUserInfoLabel>
+          </UserInfoLabel>
           <EditUserInfoInput />
-        </EditUserInfoItem>
+        </UserInfoItemContainer>
 
       </UserInfo>
       <UserInfoButton onClick={() => setEditData(false)}>
@@ -101,15 +139,29 @@ export const ProfileData = () => {
   )
 
   return (
-    <ProfileContainer>
-        <UserPictureContainer/>
-        
-        {
-          ! editData
-            ? ShowUserInfo()
-            : EditUserInfo()
-        }
+    <>
 
-    </ProfileContainer>
+      <Modal
+        showModal={showModal}
+        onClose={() => setShowModal(false)}
+
+      />
+      <ProfileContainer>
+
+        <UserPicture 
+          onClick={() => editData && setShowModal(true)}
+          edit={editData}
+        >
+          {editData && <EditUserPictureIcon/>}
+        </UserPicture>
+          
+          {
+            ! editData
+              ? ShowUserInfo()
+              : EditUserInfo()
+          }
+
+      </ProfileContainer>
+    </>
   )
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import defaultUser from '../../styles/images/icons/default-user.jpg';
+import editIcon from '../../styles/images/icons/edit-pencil.png';
 
 export const ProfileContainer = styled.div`
 
@@ -11,13 +12,14 @@ export const ProfileContainer = styled.div`
 
 `;
 
-export const UserPictureContainer = styled.div`
+export const UserPicture = styled.button`
 
+    border: none;
     display: flex;
     flex-direction: row;
     width: 11rem;
     height: 11rem;
-    margin: 1rem auto 0 auto;
+    margin: 2rem auto 0 auto;
     transition-duration: 0.25s, 0.35s;
     box-shadow: 0.1rem 0.1rem 1rem 0.1rem rgba(0,0,0,0.4);
     &:hover {
@@ -26,9 +28,23 @@ export const UserPictureContainer = styled.div`
         right: 0.01rem;
         box-shadow: 0rem 0rem 1rem 0.5rem rgba(0,0,0,0.401);
         transform: scale(1.005);
+        ${ ({ edit }) => edit && `cursor: pointer;` }
     }
     border-radius: 1rem;
     background-image: url(${defaultUser});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+`;
+
+export const EditUserPictureIcon = styled.div`
+
+    margin: auto 0.2rem 0.7rem auto;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.2;
+    background-image: url(${editIcon});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -115,7 +131,7 @@ export const EditUserInfoForm = styled.form`
 
 `;
 
-export const EditUserInfoItem = styled.div`
+export const UserInfoItemContainer = styled.div`
 
     display: flex;
     margin-bottom: 1.5rem;
@@ -123,7 +139,7 @@ export const EditUserInfoItem = styled.div`
 
 `;
 
-export const EditUserInfoLabel = styled.label`
+export const UserInfoLabel = styled.label`
 
     margin: auto auto 0.2rem 5%;
     & > span {

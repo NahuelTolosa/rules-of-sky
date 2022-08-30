@@ -6,7 +6,7 @@ export const StyledModalContainer = styled.div`
     position: absolute;
     top: 25%;
     left: 25%;
-    background-color: gray;
+    background-color: #ddd;
     width: 50vw;
     height: 50vh;
     z-index: 101;
@@ -54,10 +54,10 @@ export const StyledCloseButton = styled.button`
     height: 1.5rem;
     cursor: pointer;
     border-radius: 10rem;
-    transition-duration: 0.25s, 0.25s;
+    transition-duration: 0.5s, 0.1s;
 
     &:hover {
-        transform: scale(1);
+        transform: scale(1.1);
     }
 
 `;
