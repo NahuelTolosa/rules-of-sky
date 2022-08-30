@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { StyledGrid } from './GalleryGrid.css'
 import { GalleryGridItem } from './GalleryGridItem'
 import img1 from '../../styles/images/gallery/photo-1.png';

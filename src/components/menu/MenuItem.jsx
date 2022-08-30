@@ -4,7 +4,9 @@ import { StyledButton } from './Menu.css'
 export const MenuItem = ({ item, setPage, page }) => {
 
     const handleClick = (state) => {
-        setPage(state)
+        item !== "Tienda"
+          ? setPage(state)
+          : window.open("https://rulesofsky.tebex.io/")
     }
 
   return (
